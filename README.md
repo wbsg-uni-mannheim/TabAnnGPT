@@ -7,7 +7,7 @@ The conda environment used for the experiments can be found in the file "llm.yml
 
 ## Data
 
-The data used for the experiments is a sample from the WDC Schema.org Table Annotation Benchmark and is stored in the folder *data*. The folder contains a training set and a test set.
+The data used for the experiments is a sample from the WDC Schema.org Table Annotation Benchmark (<a href="http://webdatacommons.org/structureddata/sotab/">SOTAB</a>) and is stored in the folder *data*. The folder contains a training set and a test set.
 
 ## Running the experiments
 
