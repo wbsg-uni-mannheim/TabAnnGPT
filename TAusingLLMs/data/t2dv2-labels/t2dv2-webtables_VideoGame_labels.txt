@@ -1,0 +1,6 @@
+dbo:Company
+dbo:genre
+dbo:date
+dbo:Currency
+dbo:Person
+dbo:Language

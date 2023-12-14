@@ -1,0 +1,4 @@
+dbo:elevation
+dbo:mountainRange
+dbo:locatedInArea
+dbp:gridRefUk

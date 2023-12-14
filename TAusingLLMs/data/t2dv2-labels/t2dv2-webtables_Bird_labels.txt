@@ -1,0 +1,5 @@
+dbo:Species
+xsd:double
+xsd:positiveInteger
+dbo:Country
+dbo:Place

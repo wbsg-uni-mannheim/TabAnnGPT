@@ -1,0 +1,5 @@
+dbo:developer
+dbo:genre
+dbo:publisher
+dbo:releaseDate
+dbo:computingPlatform

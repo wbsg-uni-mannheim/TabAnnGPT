@@ -1,0 +1,3 @@
+dbp:species
+dbp:genus
+dbp:status

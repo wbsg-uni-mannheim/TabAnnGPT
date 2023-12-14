@@ -1,0 +1,3 @@
+dbo:elevation
+dbo:areaTotal
+dbo:location

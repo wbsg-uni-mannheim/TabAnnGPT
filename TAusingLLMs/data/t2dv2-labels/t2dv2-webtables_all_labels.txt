@@ -1,0 +1,16 @@
+dbo:date
+dbo:City
+dbo:GovernmentType
+dbo:Language
+dbo:genre
+dbo:Company
+dbo:Country
+dbo:Currency
+xsd:positiveInteger
+dbo:Person
+dbo:Place
+xsd:double
+dbo:MountainRange
+dbo:Identifier
+monetaryValue
+dbo:Species

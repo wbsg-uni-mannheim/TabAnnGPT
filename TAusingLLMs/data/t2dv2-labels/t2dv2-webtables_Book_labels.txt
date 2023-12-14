@@ -1,0 +1,10 @@
+dbo:Person
+dbo:date
+dbo:Language
+dbo:genre
+dbo:Company
+dbo:Country
+dbo:Currency
+xsd:positiveInteger
+xsd:double
+dbo:Identifier

@@ -1,0 +1,6 @@
+dbo:City
+dbo:Country
+dbo:Place
+xsd:double 
+xsd:positiveInteger
+dbo:date

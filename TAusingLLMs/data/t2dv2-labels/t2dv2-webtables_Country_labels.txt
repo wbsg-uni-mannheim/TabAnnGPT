@@ -1,0 +1,10 @@
+dbo:Place
+dbo:date
+dbo:City
+xsd:double
+xsd:positiveInteger
+monetaryValue
+dbo:Country
+dbo:Language
+dbo:Currency
+dbo:GovernmentType

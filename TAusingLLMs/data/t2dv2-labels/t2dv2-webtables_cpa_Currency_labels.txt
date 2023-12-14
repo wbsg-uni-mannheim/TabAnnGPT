@@ -1,0 +1,4 @@
+dbp:symbol
+dbp:subunitName
+dbp:isoCode
+dbo:usingCountry

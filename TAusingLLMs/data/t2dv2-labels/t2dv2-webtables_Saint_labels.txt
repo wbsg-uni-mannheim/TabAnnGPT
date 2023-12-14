@@ -1,0 +1,8 @@
+dbo:date
+dbo:City
+dbo:Person
+dbo:Place
+xsd:double
+xsd:positiveInteger
+dbo:Country
+dbo:Language

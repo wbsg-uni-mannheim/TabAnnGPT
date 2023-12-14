@@ -1,0 +1,3 @@
+dbo:city
+dbo:location
+dbo:iataLocationIdentifier

@@ -1,0 +1,3 @@
+dbo:City
+dbo:Place
+dbo:Identifier

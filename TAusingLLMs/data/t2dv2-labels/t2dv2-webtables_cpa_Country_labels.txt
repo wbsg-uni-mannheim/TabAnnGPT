@@ -1,0 +1,12 @@
+dbo:governmentType
+dbp:gdpNominal
+dbp:establishedDate
+dbo:language
+dbo:PopulatedPlace/area
+dbo:PopulatedPlace/populationDensity
+dbp:gdpNominalPerCapita
+dbo:capital
+dbo:currencyCode
+dbo:currency
+dbo:populationTotal
+dbo:iso31661Code
