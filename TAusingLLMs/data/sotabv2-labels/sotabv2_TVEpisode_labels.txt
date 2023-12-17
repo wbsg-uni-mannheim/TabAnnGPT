@@ -1,0 +1,13 @@
+DateTime
+URL
+Date
+Person/name
+Number
+CreativeWorkSeries
+TVEpisode/name
+Duration
+Rating
+Country
+Photograph
+CreativeWork/name
+CreativeWork

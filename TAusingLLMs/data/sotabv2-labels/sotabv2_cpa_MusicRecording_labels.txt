@@ -1,0 +1,10 @@
+inAlbum
+url
+datePublished
+dateCreated
+genre
+description
+ratingValue
+byArtist
+duration
+image

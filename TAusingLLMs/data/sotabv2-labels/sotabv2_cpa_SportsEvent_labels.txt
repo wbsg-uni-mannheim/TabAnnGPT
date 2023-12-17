@@ -1,0 +1,16 @@
+eventStatus
+location
+url
+endDate
+organizer
+startDate
+performer
+homeTeam
+eventAttendanceMode
+category
+availability
+price
+description
+awayTeam
+priceCurrency
+image

@@ -1,0 +1,10 @@
+postalCode
+latitude
+addressCountry
+telephone
+addressLocality
+streetAddress
+longitude
+addressRegion
+description
+address

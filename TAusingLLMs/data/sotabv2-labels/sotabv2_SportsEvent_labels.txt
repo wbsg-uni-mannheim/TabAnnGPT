@@ -1,0 +1,17 @@
+DateTime
+URL
+Photograph
+Number
+Boolean
+EventAttendanceModeEnumeration
+SportsTeam
+ItemAvailability
+Date
+price
+SportsEvent/name
+currency
+Place/name
+Organization
+category
+Person/name
+EventStatusType

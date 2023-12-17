@@ -1,0 +1,12 @@
+inAlbum
+url
+duration
+numTracks
+byArtist
+datePublished
+publisher
+price
+genre
+description
+image
+track

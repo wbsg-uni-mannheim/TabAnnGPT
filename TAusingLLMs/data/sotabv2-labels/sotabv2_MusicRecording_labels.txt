@@ -1,0 +1,12 @@
+URL
+DateTime
+Date
+MusicRecording/name
+Number
+MusicAlbum/name
+Duration
+MusicArtistAT
+Boolean
+Photograph
+Country
+Rating

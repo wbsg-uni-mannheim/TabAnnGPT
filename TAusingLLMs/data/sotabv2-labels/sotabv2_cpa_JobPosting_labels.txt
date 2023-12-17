@@ -1,0 +1,8 @@
+url
+hiringOrganization
+datePosted
+description
+employmentType
+address
+image
+jobTitle

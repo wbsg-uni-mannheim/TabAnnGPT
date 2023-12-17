@@ -1,0 +1,15 @@
+URL
+Photograph
+addressRegion
+addressLocality
+LocationFeatureSpecification
+streetAddress
+CoordinateAT
+Number
+Country
+telephone
+Place/name
+DayOfWeek
+Time
+PostalAddress
+postalCode

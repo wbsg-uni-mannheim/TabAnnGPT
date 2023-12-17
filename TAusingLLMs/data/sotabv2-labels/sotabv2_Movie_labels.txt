@@ -1,0 +1,16 @@
+URL
+Photograph
+Boolean
+Language
+DateTime
+Rating
+Date
+Movie/description
+Person/name
+Movie/name
+Number
+Country
+Organization
+Duration
+Review
+MusicArtistAT

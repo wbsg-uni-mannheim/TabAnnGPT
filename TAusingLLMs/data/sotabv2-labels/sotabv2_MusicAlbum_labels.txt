@@ -1,0 +1,13 @@
+DateTime
+URL
+ItemList
+MusicRecording/name
+price
+Date
+Duration
+MusicAlbum/name
+Person/name
+MusicArtistAT
+Number
+Boolean
+Photograph
