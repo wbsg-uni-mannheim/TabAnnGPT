@@ -1,0 +1,3 @@
+bash ./run_test.sh model/sotabv2/0/turlturl-re-colpair_mosato_bert_bert-base-uncased-bs32-ml-32__turl-1.00_turl-re-1.00 sotabv2/ 82 108
+bash ./run_test.sh model/sotabv2/1/turlturl-re-colpair_mosato_bert_bert-base-uncased-bs32-ml-32__turl-1.00_turl-re-1.00 sotabv2/ 82 108
+bash ./run_test.sh model/sotabv2/2/turlturl-re-colpair_mosato_bert_bert-base-uncased-bs32-ml-32__turl-1.00_turl-re-1.00 sotabv2/ 82 108
