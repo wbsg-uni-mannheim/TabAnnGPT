@@ -1,4 +1,0 @@
-xsd:positiveInteger
-xsd:double
-dbo:Place
-dbo:MountainRange

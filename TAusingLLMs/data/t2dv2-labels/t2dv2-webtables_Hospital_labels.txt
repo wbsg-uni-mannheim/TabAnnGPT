@@ -1,5 +1,0 @@
-dbo:Place
-dbo:Country
-xsd:positiveInteger
-xsd:double
-dbo:City

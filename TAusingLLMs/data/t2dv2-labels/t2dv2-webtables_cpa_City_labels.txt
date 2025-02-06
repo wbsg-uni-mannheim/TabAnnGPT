@@ -1,4 +1,0 @@
-dbo:mayor
-dbo:country
-dbo:populationMetro
-dbo:populationTotal

@@ -1,5 +1,0 @@
-xsd:double
-xsd:positiveInteger
-dbo:Country
-dbo:Currency
-dbo:Identifier

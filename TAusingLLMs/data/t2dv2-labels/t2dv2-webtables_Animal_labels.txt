@@ -1,7 +1,0 @@
-dbo:Species
-dbo:date
-dbo:Country
-xsd:positiveInteger
-dbo:Place
-xsd:double
-dbo:MountainRange

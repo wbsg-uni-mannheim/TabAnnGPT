@@ -1,3 +1,0 @@
-dbo:floorCount
-dbo:height
-dbo:location

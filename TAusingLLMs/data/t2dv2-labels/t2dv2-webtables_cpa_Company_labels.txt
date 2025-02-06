@@ -1,5 +1,0 @@
-dbo:revenue
-dbp:symbol
-dbo:assets
-dbo:industry
-dbo:netIncome

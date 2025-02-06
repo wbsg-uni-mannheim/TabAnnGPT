@@ -1,6 +1,0 @@
-dbo:Person
-dbo:date
-dbo:Language
-dbo:Country
-xsd:double
-xsd:positiveInteger

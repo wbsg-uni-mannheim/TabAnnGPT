@@ -1,2 +1,0 @@
-dbo:country
-dbo:location

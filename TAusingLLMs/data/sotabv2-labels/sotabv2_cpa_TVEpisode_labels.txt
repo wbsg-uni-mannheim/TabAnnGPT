@@ -1,9 +1,0 @@
-url
-startDate
-episodeNumber
-director
-datePublished
-partOfSeries
-description
-ratingValue
-duration

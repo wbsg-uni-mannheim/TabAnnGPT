@@ -1,9 +1,0 @@
-addressRegion
-addressLocality
-CoordinateAT
-streetAddress
-Country
-telephone
-Museum/name
-PostalAddress
-postalCode

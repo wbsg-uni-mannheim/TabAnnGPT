@@ -1,4 +1,0 @@
-dbo:Country
-xsd:double
-dbo:Place
-xsd:positiveInteger

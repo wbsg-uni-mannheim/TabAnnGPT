@@ -1,8 +1,0 @@
-monetaryValue
-xsd:double
-dbo:City
-dbo:Country
-dbo:Place
-dbo:Person
-xsd:positiveInteger
-dbo:date
