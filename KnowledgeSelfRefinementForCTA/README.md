@@ -3,9 +3,9 @@ This folder contains the code to reproduce the experiments in the paper <b>"Know
 
 ## Environement Setup
 
-The packages required for running our code can be found in the `unsloth_env.yml` file. To build the enviroment, navigate to the folder containing the yml file and run:
+The packages required for running our code can be found in the `cta-self-ref.yml` file. To build the enviroment, navigate to the folder containing the yml file and run:
 
- `conda env create -f unsloth_env.yml`.
+ `conda env create -f cta-self-ref.yml`.
 
 ## Data
 We use three datasets is our experiments: a subset of SOTAB V2 CTA, a subset of WikiTURL and the Limaye dataset. The traning, validation and test splits usedin our pper can be found in the `data` directory.
