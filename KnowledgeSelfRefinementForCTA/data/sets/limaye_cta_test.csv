@@ -1,0 +1,108 @@
+file_name,label,label_2,col_index,all_labels
+file100415_0_cols1_rows14,Book,,1,Book
+file101640_0_cols1_rows31,University,College,3,"University, College"
+file107572_0_cols1_rows62,Book,,1,Book
+file109657_7_cols1_rows7,Book,,0,Book
+file110816_0_cols1_rows40,University,,0,University
+file117573_0_cols1_rows23,Book,,1,Book
+file118301_29_cols1_rows26,Newspaper,,0,Newspaper
+file119797_0_cols1_rows39,University,College,0,"University, College"
+file123408_10_cols1_rows124,Newspaper,,0,Newspaper
+file124163_0_cols1_rows10,Film,,0,Film
+file124163_4_cols1_rows13,Actor,,0,Actor
+file124647_0_cols1_rows9,Monarch,Royalty,1,"Monarch, Royalty"
+file132415_0_cols1_rows465,Person,,1,Person
+file136273_3_cols1_rows11,Book,,1,Book
+file136273_4_cols1_rows7,Book,,1,Book
+file139009_11_cols1_rows25,TelevisionEpisode,,1,TelevisionEpisode
+file13997_0_cols1_rows20,University,,0,University
+file141150_4_cols1_rows13,Actor,,0,Actor
+file143181_0_cols1_rows56,Book,,0,Book
+file144332_0_cols1_rows14,Book,,0,Book
+file145174_1_cols1_rows37,Film,,0,Film
+file145241_0_cols1_rows9,Politician,OfficeHolder,1,"Politician, OfficeHolder"
+file145480_2_cols1_rows52,Person,,1,Person
+file152457_0_cols1_rows7,Monarch,Royalty,1,"Monarch, Royalty"
+file155305_0_cols1_rows17,InternationalOrganisation,,0,InternationalOrganisation
+file158965_0_cols1_rows100,Film,,0,Film
+file16426_0_cols1_rows11,Mine,,0,Mine
+file169346_0_cols1_rows7,Monarch,Royalty,1,"Monarch, Royalty"
+file172679_0_cols1_rows14,Book,,0,Book
+file173767_1_cols1_rows33,Film,,0,Film
+file180098_0_cols1_rows23,Book,,0,Book
+file181303_0_cols1_rows31,Person,,0,Person
+file183555_2_cols1_rows12,Book,,0,Book
+file183833_0_cols1_rows21,Organisation,,0,Organisation
+file184372_0_cols1_rows13,Actor,,0,Actor
+file187184_0_cols1_rows84,Book,,1,Book
+file191712_10_cols1_rows25,TelevisionEpisode,,1,TelevisionEpisode
+file191712_11_cols1_rows25,TelevisionEpisode,,1,TelevisionEpisode
+file191712_9_cols1_rows20,TelevisionEpisode,,1,TelevisionEpisode
+file193712_0_cols1_rows51,Film,,0,Film
+file196742_0_cols1_rows14,Book,,0,Book
+file198804_0_cols1_rows39,College,University,0,"College, University"
+file199969_2_cols1_rows19,Scientist,,1,Scientist
+file202088_0_cols1_rows32,Book,,0,Book
+file202151_0_cols1_rows31,College,University,3,"College, University"
+file205708_0_cols1_rows20,University,,0,University
+file208153_0_cols1_rows17,Film,,0,Film
+file20892_7_cols1_rows133,Scientist,,0,Scientist
+file21126_1_cols1_rows86,Bird,,0,Bird
+file215806_0_cols1_rows9,Politician,OfficeHolder,1,"Politician, OfficeHolder"
+file219474_12_cols1_rows17,TelevisionEpisode,,1,TelevisionEpisode
+file220036_5_cols1_rows15,Book,,1,Book
+file223732_0_cols1_rows9,Politician,OfficeHolder,1,"Politician, OfficeHolder"
+file223755_0_cols1_rows27,Film,,0,Film
+file224388_0_cols1_rows35,Book,,1,Book
+file227142_1_cols1_rows7,Software,,1,Software
+file228670_0_cols1_rows20,University,,0,University
+file231281_1_cols1_rows39,Bird,,0,Bird
+file233008_0_cols1_rows39,College,University,0,"College, University"
+file234296_0_cols1_rows14,Actor,,0,Actor
+file234558_0_cols1_rows39,Bird,,0,Bird
+file236160_0_cols1_rows28,Book,,1,Book
+file242908_0_cols1_rows9,Monarch,Royalty,1,"Monarch, Royalty"
+file24917_0_cols1_rows26,Film,,0,Film
+file261619_0_cols1_rows40,University,,0,University
+file266258_0_cols1_rows135,Newspaper,,0,Newspaper
+file266838_4_cols1_rows19,Person,,1,Person
+file266838_5_cols1_rows22,Person,,1,Person
+file267184_1_cols1_rows22,Film,,3,Film
+file268478_10_cols1_rows25,TelevisionEpisode,,1,TelevisionEpisode
+file279754_0_cols1_rows19,PrimeMinister,,0,PrimeMinister
+file303419_1_cols1_rows49,Scientist,,1,Scientist
+file339527_0_cols1_rows19,Newspaper,,0,Newspaper
+file339783_0_cols1_rows11,InternationalOrganisation,,0,InternationalOrganisation
+file38336_0_cols1_rows12,Person,,0,Person
+file39042_0_cols1_rows6,Automobile,,0,Automobile
+file391005_0_cols1_rows9,ProtectedArea,Park,0,"ProtectedArea, Park"
+file396393_0_cols1_rows100,Film,,0,Film
+file398415_0_cols1_rows58,ProtectedArea,Park,0,"ProtectedArea, Park"
+file41945_0_cols1_rows87,Letter,,0,Letter
+file42049_0_cols1_rows6,Automobile,,0,Automobile
+file429503_0_cols1_rows12,OfficeHolder,PrimeMinister,0,"OfficeHolder, PrimeMinister"
+file461483_0_cols1_rows39,Bird,,0,Bird
+file47187_0_cols1_rows12,Royalty,,0,Royalty
+file476930_0_cols1_rows40,University,,0,University
+file480138_0_cols1_rows17,InternationalOrganisation,,0,InternationalOrganisation
+file493682_0_cols1_rows31,Person,,0,Person
+file539079_0_cols1_rows268,Writer,,0,Writer
+file544011_0_cols1_rows15,InternationalOrganisation,,0,InternationalOrganisation
+file544895_0_cols1_rows10,Software,,1,Software
+file565700_0_cols1_rows16,InternationalOrganisation,,0,InternationalOrganisation
+file57570_0_cols1_rows72,Scientist,,0,Scientist
+file580926_2_cols1_rows35,Newspaper,,0,Newspaper
+file589737_0_cols1_rows34,HistoricPlace,,0,HistoricPlace
+file606482_0_cols1_rows33,President,OfficeHolder,0,"President, OfficeHolder"
+file60763_0_cols1_rows7,Letter,,0,Letter
+file64308_0_cols1_rows8,Book,,1,Book
+file64428_2_cols1_rows18,Mine,,0,Mine
+file64517_1_cols1_rows63,Film,,0,Film
+file65785_1_cols1_rows57,Writer,,1,Writer
+file72777_4_cols1_rows20,InternationalOrganisation,,0,InternationalOrganisation
+file85735_2_cols1_rows77,Person,,1,Person
+file87383_1_cols1_rows100,Writer,,0,Writer
+file95757_0_cols1_rows19,OfficeHolder,PrimeMinister,0,"OfficeHolder, PrimeMinister"
+file98470_1_cols1_rows55,Film,,1,Film
+file98594_6_cols1_rows25,TelevisionEpisode,,1,TelevisionEpisode
+file99290_1_cols1_rows63,Book,,1,Book
