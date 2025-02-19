@@ -15,13 +15,13 @@ if __name__ == "__main__":
     os.environ['OPENAI_API_KEY'] = config["OPENAI_API_KEY"]
     OPENAI_API_KEY = config["OPENAI_API_KEY"]
 
-    datasets = ["limayeu"] # Other datasets: "sotabv2-subsetu", "wikitables-2"
+    datasets = ["sotabv2-subsetu"] # Other datasets: "limayeu", "wikitables-2"
     dataset_version = ""
     models = ["gpt-4o-mini"] # gpt-4o-2024-05-13
     # Methods:
-    # Zero-shot setup: -simple-reviewer-explanation or -simple-reviewer
-    # Selective comparative definitions setup: -simple-reviewer-errors-explanation or -simple-reviewer-errors
-    methods = ["-simple-reviewer-errors"]
+    # Zero-shot setup: -reviewer-explanation or -reviewer
+    # Selective comparative definitions setup: -reviewer-errors-explanation or -reviewer-errors
+    methods = ["-reviewer-explanation"]
 
     for model_name in models:
         print(model_name)
@@ -34,8 +34,8 @@ if __name__ == "__main__":
             examples, labels, train_examples, train_labels, val_examples, val_labels, labels_to_text, text_to_label, labels_joined, train, val, test = load_cta_dataset(dataset, dataset_version)
 
             for method in methods:
-                # To pair self-correction with definitions, pass the name of the definitions, example: "-gpt-4o_demonstration"
-                # For self-correction in zero-shot setup leave an empty string: ""
+                # To pair self-correction with definitions, pass the name of the definitions, example: "-gpt-4o-2024-05-13_demonstration"
+                # For self-correction in zero-shot setup and in the selective comparative definitions setup leave an empty string: ""
                 for def_method in ["-gpt-4o-2024-05-13_demonstration"]:
 
                     first_messages = []
@@ -47,13 +47,13 @@ if __name__ == "__main__":
                     else:
                         return_format = "{'column_name': ['label', 'explanation']}" if "explanation" in method else "{column_name: label}"
                     
-                    if method == "-simple-reviewer": # self-correction, without outputting review
+                    if method == "-reviewer": # self-correction, without outputting review
                         first_messages.append(SystemMessage(content=f"You are a reviewer model that reviews the column classification done by another model. A table and a response from the model will be given to you. Check the table, the response and the label set. If a column classification is wrong, return the correct classification for all columns corrected. Respond only with the JSON format: {return_format}"))
-                    elif method == "-simple-reviewer-explanation": # self-correction with a review in the output
+                    elif method == "-reviewer-explanation": # self-correction with a review in the output
                         first_messages.append(SystemMessage(content=f"You are a reviewer model that reviews the column classification done by another model. A table and a response from the model will be given to you. The response contains the label{nr_labels} for each column and an explanation by the model why the label{nr_labels} {'were' if nr_labels!='' else 'was'} chosen. Check the table, the response and the label set. If a column classification is wrong, return the correct classification for all columns corrected and your explanation why the label{nr_labels} chosen by the other model is correct or not and why the new label{nr_labels} chosen fit{'' if nr_labels!='' else 's'} better. Respond only with the JSON format: {return_format}"))
-                    elif method == "-simple-reviewer-errors": # self-correction paired with selective comparative definitions, without outputting review
+                    elif method == "-reviewer-errors": # self-correction paired with selective comparative definitions, without outputting review
                         first_messages.append(SystemMessage(content=f"You are a reviewer model that reviews the column classification done by another model. A table and a response from the model will be given to you. Check the table, the response, the label set and some guidelines to distinguish between labels. If a column classification is wrong, return the correct classification for all columns corrected. Respond only with the JSON format: {return_format}"))
-                    elif method == "-simple-reviewer-errors-explanation": # self-correction paired with selective comparative definitions, with review in output
+                    elif method == "-reviewer-errors-explanation": # self-correction paired with selective comparative definitions, with review in output
                         first_messages.append(SystemMessage(content=f"You are a reviewer model that reviews the column classification done by another model. A table and a response from the model will be given to you. The response contains the label{nr_labels} for each column and an explanation by the model why the label{nr_labels} {'were' if nr_labels!='' else 'was'} chosen. Check the table, the response, the label set and some guidelines to distinguish between labels. If a column classification is wrong, return the correct classification for all columns corrected and your explanation why the label{nr_labels} chosen by the other model is correct or not and why the new label{nr_labels} chosen fit{'' if nr_labels!='' else 's'} better. Respond only with the JSON format: {return_format}"))
 
                     # Load previous predictions: first step of self-correction
@@ -82,7 +82,7 @@ if __name__ == "__main__":
                         # Selective comparative definitions setup: select comparative definitions to show based on the previous models' predictions 
                         comparative_defs_string = ""
                         if "error" in method:
-                            comparative_defs = sienna.load(f"output/{dataset}-{model_name}_comparative_definitions.json")
+                            comparative_defs = sienna.load(f"output/{dataset}-{model_name}-comparative_definitions.json")
                             for label in comparative_defs:
                                 if dataset in ["wikitables-2","limayeu"]:
                                     labels_with_errors = flatten_list(parse_json(previous_preds[j]).values()) if parse_json(previous_preds[j]) and isinstance(list(parse_json(previous_preds[j]).values())[0][0], str) else [] # else flatten_list(previous_preds[j][0].values()) change

@@ -1,6 +1,6 @@
 import pdb
 from utils import load_pickle_file, save_pickle_file, load_cta_dataset, parse_json
-from evaluation_utils import evaluate_table, group_errors, group_errors_multilabel
+from evaluation_utils import group_errors, group_errors_multilabel
 import os
 from dotenv import dotenv_values
 from langchain.chat_models import ChatOpenAI
@@ -155,9 +155,9 @@ if __name__ == "__main__":
             error_feedback[label] = res.content
         
         # Save comparative definitions
-        model_short_name = f"{model_path.split('/')[1].replace('0.0001_16_10_5020_wd=0.0_all-layers_','').replace('0.0001_8_10_5020_wd=0.0_all-layers_','')}"
+        model_short_name = f"{model_path.split('/')[1].replace('0.0001_16_10_5020_','').replace('0.0001_8_10_5020_','')}"
         save_pickle_file(f"output_val/{dataset}/{model_path}/preds/table-0-shot{model_short_name}-comparative-definitions.pkl", preds)
         save_pickle_file(f"output_val/{dataset}/{model_path}/messages/table-0-shot{model_short_name}-comparative-definitions-messages.pkl", messages_list)
-        sienna.save(error_feedback, f"output/{dataset}-{model_short_name}_comparative_definitions.json")
-        sienna.save(error_feedback, f"data/{dataset}-labels/{dataset}-{model_short_name}_comparative_definitions.json")
+        sienna.save(error_feedback, f"output/{dataset}-{model_short_name}-comparative_definitions.json")
+        sienna.save(error_feedback, f"data/{dataset}-labels/{dataset}-{model_short_name}-comparative_definitions.json")
         

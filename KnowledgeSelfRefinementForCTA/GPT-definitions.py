@@ -28,7 +28,6 @@ if __name__ == "__main__":
         for dataset in datasets:
             suff="-hier" if "wikitables" in dataset else ""
             dataset_version = "-random-20" if dataset!="limayeu" else ""
-            # suff = "-similar"
 
             print(dataset)
             model_path = model_name # to change model path if fine-tuned models, to make path shorter
@@ -43,7 +42,7 @@ if __name__ == "__main__":
             # "-ft-gpt-4o_demonstration": labels generated from the fine-tuned models = demonstration definitions
             # "-gpt-4o-2024-05-13_demonstration": labels generated from gpt-4o = demonstration definitions
             # "-gpt-4o-mini-comparative": comparative definitions generated for gpt-mini from the errors of the validation set
-            # "-gpt-4o-2024-05-13_refined": refined definitions from the errors of the gpt-4o model on the validation set, used with the gpt-4o model
+            # "-gpt-4o-2024-05-13_demonstration_gpt-4o-2024-05-13_refined": refined definitions from the errors of the gpt-4o model on the validation set, used with the gpt-4o model
             for def_method in ["-gpt-4o-2024-05-13_demonstration"]:
                 # Load generated definitions
                 label_definitions = sienna.load(f"data/{dataset}-labels/{dataset}{def_method}_definitions.json")

@@ -47,20 +47,21 @@ if __name__ == "__main__":
         cache_dir="hf_cache/"
     )
 
-    run_val = True # default always run validation
+    run_val = True # default: always run validation
 
-    # Fine-tuning Sets:
-    # Simple set
-    # Fine-tuning with definitions
-    # Multi-task fine-tuning
-    # Multi-task-with demonstrations
+    # Fine-tuning Sets (training):
+    # Simple set = sotabv2-subsetu-cta-train-random-20, wikitables-2-cta-train-random-20
+    # Fine-tuning with definitions = sotabv2-subsetu-cta-train-random-20-with-gpt-4o-2024-05-13_demonstration, wikitables-2-cta-train-random-20-with-gpt-4o-2024-05-13_demonstration
+    # Multi-task fine-tuning = sotabv2-subsetu-cta-train-random-20-multi-task-gpt-4o-2024-05-13_demonstration, wikitables-2-cta-train-random-20-multi-task-gpt-4o-2024-05-13_demonstration
+    # Multi-task-with demonstrations = sotabv2-subsetu-cta-train-random-20-multi-task-3-gpt-4o-2024-05-13_demonstration, wikitables-2-cta-train-random-20-multi-task-3-gpt-4o-2024-05-13_demonstration
+    
     # Validation suffix
     val_suffix = ""
-    if "definitions" not in args.subset:
+    if "with" not in args.subset:
         # Validation set for simple, multi-task sets
         val_suffix = ""
     else:
-        val_suffix += "-with-gpt-4o-2024-05-13_demonstration_definitions"
+        val_suffix += "-with-gpt-4o-2024-05-13_demonstration"
 
     if "-instr" in args.subset:
       val_suffix += "-instr"

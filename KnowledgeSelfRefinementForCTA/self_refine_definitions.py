@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     model_path=model_name # if fine-tuned model change path
 
-    new_def_method = f"_{model_path.split('/')[1].replace('0.0001_16_10_5020_wd=0.0_all-layers_','').replace('0.0001_8_10_5020_wd=0.0_all-layers_','')}" if "FT" in model_path else f"_{model_path.replace('/','-')}"
+    new_def_method = f"_{model_path.split('/')[1].replace('0.0001_16_10_5020_','').replace('0.0001_8_10_5020_','')}" if "FT" in model_path else f"_{model_path.replace('/','-')}"
     print(new_def_method)
 
     # Load env file with API KEY using full path

@@ -22,11 +22,11 @@ if __name__ == "__main__":
     parser.add_argument("--suff", type=str, default="")
     parser.add_argument("--run", type=str, default="", help="Used to pass definitions or instructions.")
     # Possible methods
-    # "-simple-reviewer"
-    # "-simple-reviewer-explanation"
-    # "-simple-reviewer-errors"
-    # "-simple-reviewer-errors-explanation"
-    parser.add_argument("--method", type=str, default="-simple-reviewer", help="The simple reviewer setup.")
+    # "-reviewer"
+    # "-reviewer-explanation"
+    # "-reviewer-errors"
+    # "-reviewer-errors-explanation"
+    parser.add_argument("--method", type=str, default="-reviewer", help="The zero-shot reviewer setup.")
     parser.add_argument("--dataset_version", type=str, default="", help="Full, random-20 or else.")
     args = parser.parse_args()
     
@@ -69,7 +69,7 @@ if __name__ == "__main__":
                         create_save_folders(f"output/{args.dataset}/{folder_path}")
                     
                     # Load definitions
-                    if "definitions" in args.run and "errors" not in args.method:
+                    if args.run !="" and "error" not in args.method:
                         label_definitions = sienna.load(f"data/{args.dataset}-labels/{args.dataset}{args.run}_definitions.json")
                         # Remove first part of defs so as not to confuse format of labels expected in response
                         for defn in label_definitions:
@@ -85,12 +85,12 @@ if __name__ == "__main__":
 
                     messages_list =[]
                     preds = []
-                    pr_suff = f"{'-similar' if 'definitions' in args.run else ''}{'-hier' if 'wikitables' in args.dataset else ''}"                    
+                    pr_suff = f"{'-similar' if args.run !="" else ''}{'-hier' if 'wikitables' in args.dataset else ''}"                    
                     # Load previous predictions: first step of self-correction
                     # Zero-shot setup: the predictions of the zero-shot prompting are loaded
                     # Demonstration definitions setup: the predictions of knowledge prompting with demonstration definitions are loaded
                     # Selective comparative definitions setup: the predictions of the zero-shot prompting predictions are loaded
-                    previous_preds = load_pickle_file(f"output/{args.dataset}/{folder_path}/preds/table-0-shot{args.run}{'-explanation' if '-explanation' in args.method else ''}{'-defs' if args.run != '' else ''}{pr_suff}-run_0.pkl")
+                    previous_preds = load_pickle_file(f"output/{args.dataset}/{folder_path}/preds/table-0-shot{args.run}{'-explanation' if '-explanation' in args.method else ''}{'-defs' if args.run !='' else ''}{pr_suff}-run_0.pkl")
 
                     if args.dataset in ["wikitables-2", "limayeu"]:
                         return_format = "{column_name: [[label/s], 'explanation']}" if "explanation" in args.method else "{column_name: [label/s]}"
@@ -98,25 +98,16 @@ if __name__ == "__main__":
                         nr_labels = ""
                         return_format = "{'column_name': ['label', 'explanation']}" if "explanation" in args.method else "{column_name: label}"
                     
-                    if args.method == "-simple-reviewer-both-explanation":
-                        # remove the explanation from the answer of the first model
-                        # parse json and remove the explanation part
-                        previous_preds = [{key: value[0] for key, value in parse_json(pred).items()} for pred in previous_preds]
-
                     # Task description and instructions
-                    if args.method == "-simple-reviewer":
+                    if args.method == "-reviewer":
                         instructions = f"You are a reviewer model that reviews the column classification done by another model. If a column classification is wrong, return the correct classification for all columns corrected. Respond only with the JSON format: {return_format}."
-                    elif args.method == "-simple-reviewer-explanation":
+                    elif args.method == "-reviewer-explanation":
                         instructions = f"You are a reviewer model that reviews the column classification done by another model. If a column classification is wrong, return the correct classification for all columns corrected and your explanation why the label chosen by the other model is correct or not and why the new label chosen fits better. Respond only with the JSON format: {return_format}"
-                    elif args.method == "-simple-reviewer-last-explanation" or args.method == "-simple-reviewer-both-explanation":
-                        instructions = f"You are a reviewer model that reviews the column classification done by another model. A table and a response from the model will be given to you. Check the table, the response and the label set. If a column classification is wrong, return the correct classification for all columns corrected and your explanation why the label chosen by the other model is correct or not and why the new label chosen fits better. Respond only with the JSON format: {return_format}"
-                    elif args.method == "-simple-reviewer-errors":
+                    elif args.method == "-reviewer-errors":
                         instructions = f"You are a reviewer model that reviews the column classification done by another model. A table and a response from the model will be given to you. Check the table, the response, the label set and some guidelines to distinguish between labels. If a column classification is wrong, return the correct classification for all columns corrected. Respond only with the JSON format: {return_format}"
-                    elif args.method == "-simple-reviewer-errors-explanation":
+                    elif args.method == "-reviewer-errors-explanation":
                         instructions = f"You are a reviewer model that reviews the column classification done by another model. A table and a response from the model will be given to you. The response contains the label for each column and an explanation by the model why the label was chosen. Check the table, the response, the label set and some guidelines to distinguish between labels. If a column classification is wrong, return the correct classification for all columns corrected and your explanation why the label chosen by the other model is correct or not and why the new label chosen fits better. Respond only with the JSON format: {return_format}"
-                    elif args.method == "-simple-reviewer-errors-last-explanation" or args.method == "-simple-reviewer-errors-both-explanation":
-                        instructions = f"You are a reviewer model that reviews the column classification done by another model. A table and a response from the model will be given to you. Check the table, the response, the label set and some guidelines to distinguish between labels. If a column classification is wrong, return the correct classification for all columns corrected and your explanation why the label chosen by the other model is correct or not and why the new label chosen fits better. Respond only with the JSON format: {return_format}"
-                    
+
                     for j, example in tqdm.tqdm(enumerate(examples), total=len(examples)):
                         messages = []
 
@@ -124,9 +115,7 @@ if __name__ == "__main__":
 
                         error_string = ""
                         if "error" in args.method:
-                            # error_feedback = sienna.load(f"output/{args.dataset}{args.run}-v5_error_feedback.json")
-                            # pdb.set_trace()
-                            error_feedback = sienna.load(f"output/{args.dataset}{'' if 'FT' in args.model_id else '-'+folder_path}{args.run}-v5_error_feedback.json") #
+                            error_feedback = sienna.load(f"output/{args.dataset}{'' if 'FT' in args.model_id else '-'+folder_path}{args.run}-comparative_definitions.json")
                             for label in error_feedback:
                                 if args.dataset in ["wikitables-2", "limayeu"]:
                                     labels_with_errors = flatten_list(parse_json(previous_preds[j]).values()) if parse_json(previous_preds[j]) and isinstance(list(parse_json(previous_preds[j]).values())[0][0], str) else [] # else flatten_list(previous_preds[j][0].values()) rregullo me vone
@@ -150,13 +139,13 @@ if __name__ == "__main__":
                             hier_message = f"The labels follow this hierarchy from lowest to highest: {hier}\n\n"
                             
                         # Show 10 most similar labels
-                        if "definitions" in args.run and "-similar" in args.suff:
+                        if args.run !="" and "-similar" in args.suff:
                             label_definitions_string = "\n".join([ f"{labels_to_text[label]}: {label_definitions[label]}" for label in example_labels[j] if label!="" and label_definitions[label]!="" ])
                         
                         # Labels set, test table, and previous predictions (+ definitions if included)
-                        if "definitions" in args.run and error_string!="": # defs and errors
+                        if args.run !="" and error_string!="": # defs and errors
                             extra_message = f"The label set is: {labels_joined}.\n\n{hier_message}The definitions of the labels are:\n{label_definitions_string}\n\nSome guidelines to distinguish between labels are:\n{error_string}\n\nThe table is:\n{example}\n\n{columns_to_annotate}The response from the classification model is:\n{previous_preds[j]}"
-                        if "definitions" in args.run and error_string == "": # defs no errors
+                        if args.run !="" and error_string == "": # defs no errors
                             extra_message = f"The label set is: {labels_joined}.\n\n{hier_message}The definitions of the labels are:\n{label_definitions_string}\n\nThe table is:\n{example}\n\n{columns_to_annotate}The response from the classification model is:\n{previous_preds[j]}"
                         elif error_string !="": # no defs only errors
                             extra_message = f"The label set is: {labels_joined}.\n\n{hier_message}Some guidelines to distinguish between labels are:\n{error_string}\n\nThe table is:\n{example}\n\n{columns_to_annotate}The response from the classification model is:\n{previous_preds[j]}"

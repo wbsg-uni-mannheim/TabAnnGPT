@@ -35,12 +35,6 @@ if __name__ == "__main__":
     output_folder = "output_val" if args.run_val else "output"
     temperature=0.001
 
-    if "-self-cons-0.5" in args.run:
-        temperature = 0.5
-    
-    if "-self-cons-0.7" in args.run:
-        temperature = 0.7
-
     # If testing fine-tuning model
     folder_paths = []
     if "FT" in args.model_id:
@@ -88,7 +82,7 @@ if __name__ == "__main__":
                         create_save_folders(f"{output_folder}/{args.dataset}/{folder_path}")
                     
                     # Load definitions
-                    if "definitions" in args.run:
+                    if args.run !="":
                         label_definitions = sienna.load(f"data/{args.dataset}-labels/{args.dataset}{args.run}_definitions.json")
                         # Remove first part of defs so as not to confuse format of labels expected in response if label in format Label: label definition
                         for defn in label_definitions:
@@ -127,7 +121,7 @@ if __name__ == "__main__":
                           instructions += f"\nYour instructions are: 1. Look at the cell values in detail. The first row of the table corresponds to the column names. 2. For each column, select a label that best represents the meaning of all cells in the column. 3. Answer with the selected label for each column using the JSON format {return_format}. 4. Answer only with labels from the provided label set!"
                         
                         # Add definitions if specified
-                        if "definitions" in args.run:
+                        if args.run !="":
                             if "-similar" in args.suff:
                                 label_definitions_string = "\n".join([ f"{labels_to_text[label]}: {label_definitions[label]}" for label in example_labels[j] if label!="" and label_definitions[label]!="" ]) 
                             instructions += f"\nThe definitions of the labels are the following:\n{label_definitions_string}"
@@ -149,7 +143,7 @@ if __name__ == "__main__":
                         extra_message = "Classify these table columns:"
                         if args.dataset in ["sotabv2-subsetu", "limayeu"]:
                             extra_message = f"Classify {', '.join([f'Column {col_idx+1}' for col_idx, l in enumerate(test[j][2]) if l!=''])}:"                      
-                        return_message = f"\nReply only with the JSON format {return_format}." if "definitions" in args.run or "-instr" in args.run else ""
+                        return_message = f"\nReply only with the JSON format {return_format}." if args.run !="" or "-instr" in args.run else ""
                         messages.append({"role": "user", "content": f"{extra_message}\n{example}{return_message}"})
 
                         messages_list.append(messages)
