@@ -1,0 +1,26 @@
+label,nr_errors,total,perc. errors
+Monarch,0.0,0,
+Letter,0.0,0,
+Bird,0.0,0,
+Book,0.0,0,
+InternationalOrganisation,0.0,0,
+OfficeHolder,2.0,0,inf
+Mine,0.0,0,
+Actor,0.0,0,
+Writer,1.0,0,inf
+HistoricPlace,0.0,0,
+Park,0.0,0,
+Automobile,0.0,0,
+Film,1.0,0,inf
+Royalty,0.0,0,
+Politician,0.0,0,
+Scientist,1.0,0,inf
+PrimeMinister,0.0,0,
+College,0.0,0,
+Person,0.0,0,
+TelevisionEpisode,0.0,0,
+Newspaper,0.0,0,
+ProtectedArea,0.0,0,
+Software,0.0,0,
+Organisation,1.0,0,inf
+President,0.0,0,
