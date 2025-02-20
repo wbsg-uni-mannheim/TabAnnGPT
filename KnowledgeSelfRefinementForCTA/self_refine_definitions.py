@@ -18,7 +18,7 @@ if __name__ == "__main__":
     dataset = "sotabv2-subsetu" # Other datasets: "limayeu", "wikitables-2"
     method = "" # or "-explanation"
     # Definitions to update
-    def_method = "-gpt-4o_demonstration" # or "-ft-gpt-4o_demonstration" for demostration definitions generated from fine-tuned models
+    def_method = "-gpt-4o-2024-05-13_demonstration" # or "-ft-gpt-4o_demonstration" for demostration definitions generated from fine-tuned models
 
     model_path=model_name # if fine-tuned model change path
 
