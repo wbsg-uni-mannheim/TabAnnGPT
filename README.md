@@ -1,4 +1,6 @@
-This repository contains code and data for reproducing the experiments of three papers:
-1. <b>CTAusingChatGPT</b> contains code and data used in the paper: "<a href="https://arxiv.org/abs/2306.00745">Column Type Annotation using ChatGPT</a>"
-2. <b>CPAusingLLMs</b> contains code and data used in the paper: "<a href="https://2024.eswc-conferences.org/wp-content/uploads/2024/05/77770060.pdf"> Column Property Annotation using Large Language Models</a>"
+This repository contains code and data for reproducing the experiments of three papers that focus on two subtasks of <a href="https://paperswithcode.com/task/table-annotation">table annotation</a>, column type annotation (CTA) and column property annotation (CPA). <a href="https://paperswithcode.com/task/column-type-annotation">CTA</a> is the task of annotating table columns with semantic types from pre-defined vocabularies, while <a href="https://paperswithcode.com/task/columns-property-annotation">CPA</a> is the task of annotating the relationships between two columns.
+
+The papers are organized into the following folders:
+1. <b>CTAusingChatGPT</b> contains code and data used in the paper: "<a href="https://ceur-ws.org/Vol-3462/TADA1.pdf">Column Type Annotation using ChatGPT</a>"
+2. <b>CPAusingLLMs</b> contains code and data used in the paper: "<a href="https://link.springer.com/chapter/10.1007/978-3-031-78952-6_6"> Column Property Annotation using Large Language Models</a>"
 3. <b>KnowledgeSelfRefinementForCTA</b> contains code and data used in the paper: "Evaluating Knowledge Generation and Self-Refinement Strategies for LLM-based Column Type Annotation"

@@ -88,6 +88,8 @@ def calculate_f1_scores(y_tests, y_preds, num_classes, types):
     for i in range(len(y_tests)):
         cm[y_preds[i]][y_tests[i]] += 1
 
+    return calculate_f1_p_r(cm, num_classes, types)
+
 def calculate_f1_p_r(cm, num_classes, types):
     report = {}
     

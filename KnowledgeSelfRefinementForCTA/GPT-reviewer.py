@@ -16,7 +16,6 @@ if __name__ == "__main__":
     OPENAI_API_KEY = config["OPENAI_API_KEY"]
 
     datasets = ["sotabv2-subsetu"] # Other datasets: "limayeu", "wikitables-2"
-    dataset_version = ""
     models = ["gpt-4o-mini"] # gpt-4o-2024-05-13
     # Methods:
     # Zero-shot setup: -reviewer-explanation or -reviewer
@@ -29,6 +28,7 @@ if __name__ == "__main__":
         
         for dataset in datasets:
             print(dataset)
+            dataset_version = "-random-20" if dataset!="limayeu" else ""
             model_path=model_name
             # Load dataset
             examples, labels, train_examples, train_labels, val_examples, val_labels, labels_to_text, text_to_label, labels_joined, train, val, test = load_cta_dataset(dataset, dataset_version)
@@ -60,7 +60,7 @@ if __name__ == "__main__":
                     # Zero-shot setup: the predictions of the zero-shot prompting are loaded
                     # Demonstration definitions setup: the predictions of knowledge prompting with demonstration definitions are loaded
                     # Selective comparative definitions setup: the predictions of the zero-shot prompting predictions are loaded
-                    previous_preds = load_pickle_file(f"output/{dataset}/{model_path}/preds/table-0-shot{def_method}{'-defs' if def_method != '' else ''}{'-hier' if 'wikitables' in dataset else ''}_0.pkl") #{'-explanation' if '-explanation' in method and 'last' not in method else ''}
+                    previous_preds = load_pickle_file(f"output/{dataset}/{model_path}/preds/table-0-shot{def_method}{'-defs' if def_method != '' else ''}{'-hier' if 'wikitables' in dataset else ''}-run_0.pkl") #{'-explanation' if '-explanation' in method and 'last' not in method else ''}
                     previous_preds = [p.content for p in previous_preds]
                     
                     messages_list = []

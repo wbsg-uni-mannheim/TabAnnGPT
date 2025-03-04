@@ -20,16 +20,18 @@ if __name__ == "__main__":
     methods = [""] # Possible outputs: "-explanation" (model gives an explanation along the annotation), "" (model answers only with annotation)
     run_val = False # Run classification on validation or test set
     output_folder = "output_val" if run_val else "output"
+    temperature = 0
 
     for model_name in models:
         print(model_name)
-        chat = ChatOpenAI(openai_api_key=OPENAI_API_KEY, temperature=0, model=model_name)
+        chat = ChatOpenAI(openai_api_key=OPENAI_API_KEY, temperature=temperature, model=model_name)
 
         for dataset in datasets:
             print(dataset)
 
             dataset_version = "-random-20" if dataset!="limayeu" else ""
-            suff = "-hier" if "wikitables" in dataset else ""
+            suff = f"-self-cons-{temperature}" if temperature != 0 else ""
+            suff += "-hier" if "wikitables" in dataset else ""
 
             model_path = model_name # to change model path if fine-tuned models, to make path shorter
 
@@ -80,13 +82,14 @@ if __name__ == "__main__":
                             for message in first_messages:
                                 messages.append(message)
 
-                            # Training demonstrations
-                            for index in similar_demos[j][-nr:]:
-                                train_extra_message = "Classify these table columns:" 
-                                if dataset in ["sotabv2-subsetu", "limayeu"]:
-                                    train_extra_message = f"Classify {', '.join([f'Column {col_idx+1}' for col_idx, l in enumerate(train[index][2]) if l!=''])}:" # asking for particular columns to be annotated
-                                messages.append(HumanMessage(content=f"{train_extra_message}\n{train_examples[index]}"))
-                                messages.append(AIMessage(content=f"{train_labels[index]}"))
+                            if nr:
+                                # Training demonstrations
+                                for index in similar_demos[j][-nr:]:
+                                    train_extra_message = "Classify these table columns:" 
+                                    if dataset in ["sotabv2-subsetu", "limayeu"]:
+                                        train_extra_message = f"Classify {', '.join([f'Column {col_idx+1}' for col_idx, l in enumerate(train[index][2]) if l!=''])}:" # asking for particular columns to be annotated
+                                    messages.append(HumanMessage(content=f"{train_extra_message}\n{train_examples[index]}"))
+                                    messages.append(AIMessage(content=f"{train_labels[index]}"))
 
                             # Test table
                             extra_message = "Classify these table columns:"
