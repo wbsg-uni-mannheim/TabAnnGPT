@@ -22,6 +22,8 @@ To run the baselines for the <b>OpenAI</b> models, the `GPT-baseline.py` file ca
 
 To run the baselines for the <b>open-source Llama</b> models, the <a href="https://github.com/wbsg-uni-mannheim/TabAnnGPT/blob/main/KnowledgeSelfRefinementForCTA/eval_scripts/run-llama-baselines.sh">`eval_scripts/run-llama-baselines.sh`</a> file can be used. In this file, the `--model_id` parameter is used to select the open-source model to use, the `--dataset` parameter can set the dataset tested and the `--shot` parameter can be used to set the number of demonstrations to inlcude in the prompts (0 or 5).
 
+To run self-consistency experiments for the OpenAI models, first run the `GPT-baseline.py` file and vary the `temperature` variable (in the paper we use temperature 0, 0.5 and 0.7). Afterwards, run the `self_consistency.py` file to get the self consistency results. For the open-source models, run the `eval_scripts/run-llama-self-consistency.sh` script and the `self_consistency.py` file.
+
 ## Knowledge Generation Prompting
 
 The following steps must followed to generate the <i>initial</i>, <i>demonstration</i> and <i>comparative</i> definitions:

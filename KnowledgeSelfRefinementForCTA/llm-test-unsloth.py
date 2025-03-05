@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
 
-    login(token="HF_token") # Specify HF token
+    # login(token="HF_token") # Specify HF token if needed
     parser.add_argument("--model_id", default="unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit", type=str)
     parser.add_argument("--dataset", type=str, default="sotabv2-subsetu", help="Dataset that is being tested.")
     parser.add_argument("--run", type=str, default="", help="Used to pass definitions or instructions.")
@@ -35,12 +35,18 @@ if __name__ == "__main__":
     output_folder = "output_val" if args.run_val else "output"
     temperature=0.001
 
+    # For self-consistency runs
+    if "-self-cons-0.5" in args.run:
+        temperature = 0.5
+    if "-self-cons-0.7" in args.run:
+        temperature = 0.7
+
     # If testing fine-tuning model
     folder_paths = []
     if "FT" in args.model_id:
         for training_run in os.listdir(f"ft-models/{args.model_id}/"): # where to find the fine-tuned models
             folder_paths.append(f"{args.model_id}/{training_run}") # where to save the predictions
-        if "definitions" in args.run: # For knowledge prompting for fine-tuning scenario, select one of the models
+        if args.run !="" and "-self-cons" not in args.run: # For knowledge prompting for fine-tuning scenario, select one of the models
             folder_paths = [folder_paths[0]]
     else:
         folder_paths.append(args.model_id.replace("/","-"))
@@ -82,7 +88,7 @@ if __name__ == "__main__":
                         create_save_folders(f"{output_folder}/{args.dataset}/{folder_path}")
                     
                     # Load definitions
-                    if args.run !="":
+                    if args.run !="" and "-self-cons" not in args.run:
                         label_definitions = sienna.load(f"data/{args.dataset}-labels/{args.dataset}{args.run}_definitions.json")
                         # Remove first part of defs so as not to confuse format of labels expected in response if label in format Label: label definition
                         for defn in label_definitions:
@@ -121,7 +127,7 @@ if __name__ == "__main__":
                           instructions += f"\nYour instructions are: 1. Look at the cell values in detail. The first row of the table corresponds to the column names. 2. For each column, select a label that best represents the meaning of all cells in the column. 3. Answer with the selected label for each column using the JSON format {return_format}. 4. Answer only with labels from the provided label set!"
                         
                         # Add definitions if specified
-                        if args.run !="":
+                        if args.run !="" and "-self-cons" not in args.run:
                             if "-similar" in args.suff:
                                 label_definitions_string = "\n".join([ f"{labels_to_text[label]}: {label_definitions[label]}" for label in example_labels[j] if label!="" and label_definitions[label]!="" ]) 
                             instructions += f"\nThe definitions of the labels are the following:\n{label_definitions_string}"

@@ -3,4 +3,4 @@ This repository contains code and data for reproducing the experiments of three 
 The papers are organized into the following folders:
 1. <b>CTAusingChatGPT</b> contains code and data used in the paper: "<a href="https://ceur-ws.org/Vol-3462/TADA1.pdf">Column Type Annotation using ChatGPT</a>"
 2. <b>CPAusingLLMs</b> contains code and data used in the paper: "<a href="https://link.springer.com/chapter/10.1007/978-3-031-78952-6_6"> Column Property Annotation using Large Language Models</a>"
-3. <b>KnowledgeSelfRefinementForCTA</b> contains code and data used in the paper: "Evaluating Knowledge Generation and Self-Refinement Strategies for LLM-based Column Type Annotation"
+3. <b>KnowledgeSelfRefinementForCTA</b> contains code and data used in the paper: "<a href="https://arxiv.org/abs/2503.02718">Evaluating Knowledge Generation and Self-Refinement Strategies for LLM-based Column Type Annotation</a>"
